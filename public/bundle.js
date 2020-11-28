@@ -21618,6 +21618,34 @@ var IndecisionApp = function (_React$Component) {
                 };
             });
         }
+
+        //Make the app persistant
+
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            try {
+                var json = localStorage.getItem('options');
+                var options = JSON.parse(json);
+                if (options) {
+                    this.setState(function () {
+                        return { options: options };
+                    });
+                }
+
+                console.log('fetching data');
+            } catch (e) {}
+        }
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate(prevProps, prevState) {
+            if (prevState.options.length !== this.state.options.length) //this.state.options = is current 
+                {
+                    var json = JSON.stringify(this.state.options);
+                    localStorage.setItem("options", json);
+                    console.log("saving data");
+                }
+        }
     }, {
         key: 'render',
         value: function render() {

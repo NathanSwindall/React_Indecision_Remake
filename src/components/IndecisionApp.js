@@ -71,6 +71,31 @@ class IndecisionApp extends React.Component {
 
     }
 
+
+    //Make the app persistant
+    componentDidMount() {
+        try {
+        const json = localStorage.getItem('options')
+        const options = JSON.parse(json)
+        if(options){
+            this.setState(() => ({options}))
+        }
+
+        console.log('fetching data')
+        } catch (e) {
+
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState.options.length !== this.state.options.length) //this.state.options = is current 
+        {
+            const json = JSON.stringify(this.state.options)
+            localStorage.setItem("options", json)
+            console.log("saving data")
+        }
+    }
+
    
 
     render(){
