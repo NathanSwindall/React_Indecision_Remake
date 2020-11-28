@@ -1,0 +1,8 @@
+Indecision app
+
+choose button
+remove all button
+options
+-remove buttons on each of these options
+
+Add options button
